@@ -1,0 +1,139 @@
+import java.util.*;
+class InfinityBank {
+    public static void main(String[] args) {
+        Long myacc_num=9663205561L;
+        int balance=20000;
+        int pin=1234;
+        Scanner myobj=new Scanner(System.in);
+        System.out.println("Welcome to the Bank of Infinity, How can we Help you");
+            System.out.println("\n.Please select following options");
+            System.out.println("1.open new Account");
+            System.out.println("2.Bank Transfer");
+            System.out.println("3.Withdraw Amount");
+            System.out.println("4.Deposit");
+            System.out.println("5.Check Account Balance");
+            System.out.println("6.Reset pin");
+            System.out.println("7.Exit\n");
+            int option=myobj.nextInt();
+            
+            if(option==1){
+                System.out.println("Enter your Name");
+                String name = myobj.nextLine();
+                System.out.println("Enter 10 Digit Account Number");
+                Long newaccount=myobj.nextLong();
+                Long lownumber=1000000000L;
+                Long highnumber=9999999999L;
+                if(newaccount < lownumber || newaccount>highnumber){
+                    System.out.println("Invalid number! please Enter 10 digit number");
+                }
+                else{
+                    System.out.println("hi "+ name +"Welcome to Bank of Infinity! your account has been succesfully created");
+                    System.out.println("Your Account Number "+ newaccount);
+                    System.out.println("Your IFSC code is INFBNK");
+                    System.out.println("Available Balance is Rs "+ balance);
+                }
+            }
+            else if(option==2){
+                ArrayList<Long> accounts = new ArrayList<Long>();
+                ArrayList<String> names = new ArrayList<String>();
+                ArrayList<String> codes = new ArrayList<String>();
+                accounts.add(9845138884L);
+                names.add("Mr.A");
+                codes.add("INFBNK");
+                accounts.add(8105950884L);
+                names.add("Mr.B");
+                accounts.add(9663707249L);
+                names.add("Mr.C");
+                accounts.add(7760826564L);
+                System.out.println("Enter the account number of the Recipent");
+                Long Racc=myobj.nextLong();
+                myobj.nextLine();
+                if(accounts.contains(Racc)){
+                    System.out.println("Enter the name of the Recipent");
+                    String Rname=myobj.nextLine();
+                    if(names.contains(Rname)){
+                        System.out.println("Enter IFSC code");
+                        String Rcode=myobj.nextLine();
+                        if(codes.contains(Rcode)){
+                            System.out.println("Enter the Amount to be Transfered");
+                            int transfer_amt=myobj.nextInt();
+                            System.out.println("Enter the 4 digit pin");
+                            int epin=myobj.nextInt();
+                            if(epin!=pin){
+                                System.out.println("Invalid pin!!");
+                                System.exit(0);
+                            }
+                            else{
+                                if(transfer_amt>balance){
+                                System.out.println("Insufficient balance");
+                                }
+                                else{
+                                    balance=balance-transfer_amt;
+                                    System.out.println("Rs "+transfer_amt+" Debited from account "+  myacc_num + " and credited to Account "+ Racc + " available Balance is Rs "+ balance);
+                                }
+                                
+                            }
+                            
+                        }
+                    }
+                    else{
+                        System.out.println("Invalid name");
+                    }
+                }
+                else{
+                    System.out.println("Invalid Account Number");
+                }
+
+            }
+            else if(option==3){
+                System.out.println("Enter Amount");
+                int withdraw=myobj.nextInt();
+                System.out.println("Enter the 4 digit pin");
+                int epin=myobj.nextInt();
+                if(epin!=pin){
+                    System.out.println("Invalid pin!!");
+                    System.exit(0);
+                }
+                else{
+                    if(withdraw>balance){
+                        System.out.println("Insufficient balance");
+                        }
+                    else{
+                        balance = balance-withdraw;
+                        System.out.println("Rs " + withdraw +" debited from account and available balance Rs " + balance);
+                        }
+                       
+                    }
+                }    
+                
+             
+            else if(option==4){
+                System.out.println("Enter the Amount to be Deposited");
+                int Deposit=myobj.nextInt();
+                balance = balance + Deposit;
+                System.out.println("Rs "+ Deposit+ " credited to your account and available balance Rs " + balance);
+            }
+            else if(option==5){
+                System.out.println("Available Balance is Rs "+ balance);
+            }
+            else if(option==6){
+                System.out.println("Enter your old pin");
+                int oldpin =myobj.nextInt();
+                if(oldpin==pin){
+                    System.out.println("Enter your new pin");
+                    int newpin=myobj.nextInt();
+                    if(newpin>9999 || newpin<1000){
+                        System.out.println("please Enter only 4 digit pin");
+                    }
+                    else{
+                        System.out.println("Your pin has been successfully changed");
+                    }
+                }
+            }
+            else if(option ==7){
+                System.out.println("thank you! you can collect your card");
+                System.exit(0);
+            }
+            
+        }
+    }
