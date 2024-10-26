@@ -1,4 +1,4 @@
-# Banking-Management-System
+# Infinity-Banking-Management-System
 
 InfinityBank is a Java console application simulating basic banking operations, such as account creation, funds transfer, deposits, and balance checks.
 
